@@ -436,6 +436,45 @@ function Index() {
         </div>
       </section>
 
+      {/* PARTNERS / SPONSORS */}
+      <section id="partners" className="py-24 bg-background border-y border-border">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <div className="text-xs uppercase tracking-[0.25em] text-clay mb-3">Partners & Sponsors</div>
+            <h2 className="font-display text-4xl md:text-5xl">Powered by those who believe in the ride.</h2>
+            <p className="mt-4 text-muted-foreground">
+              Trusted partners helping us deliver a world-class expedition across the Pearl of Africa.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-px bg-border rounded-2xl overflow-hidden shadow-soft">
+            {partners.map((p) => (
+              <a
+                key={p.name}
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={p.name}
+                className="group bg-card aspect-[3/2] flex items-center justify-center p-6 hover:bg-accent/10 transition-colors"
+              >
+                <span className="font-display text-lg md:text-xl text-clay/70 group-hover:text-primary transition-colors text-center leading-tight">
+                  {p.name}
+                </span>
+              </a>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-sm text-muted-foreground">
+              Interested in partnering with Uganda Epic 2026?{" "}
+              <a href="mailto:info@blacksmithsafaris.com?subject=Uganda Epic 2026 — Partnership" className="text-primary underline underline-offset-4">
+                Get in touch
+              </a>
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Book CTA */}
       <section id="book" className="relative py-28 md:py-36 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-sunset" />

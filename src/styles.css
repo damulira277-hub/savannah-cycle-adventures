@@ -192,3 +192,14 @@
   .bg-clay { background-color: var(--savannah-clay); }
   .bg-dust { background-color: var(--savannah-dust); }
 }
+
+@keyframes gallery-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-gallery-marquee {
+  animation-name: gallery-marquee;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}

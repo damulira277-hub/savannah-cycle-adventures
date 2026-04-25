@@ -310,10 +310,21 @@ function Index() {
           </div>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden shadow-soft">
             {highlights.map((h, i) => (
-              <div key={h.t} className="bg-card p-8 hover:bg-accent/10 transition-colors">
-                <div className="font-display text-xs text-clay">0{i + 1}</div>
-                <div className="font-display text-2xl mt-3">{h.t}</div>
-                <div className="text-sm text-muted-foreground mt-2 leading-relaxed">{h.d}</div>
+              <div key={h.t} className="bg-card hover:bg-accent/10 transition-colors flex flex-col">
+                <div className="relative h-44 overflow-hidden">
+                  <img
+                    src={h.img}
+                    alt={h.t}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent" />
+                </div>
+                <div className="p-8">
+                  <div className="font-display text-xs text-clay">0{i + 1}</div>
+                  <div className="font-display text-2xl mt-3">{h.t}</div>
+                  <div className="text-sm text-muted-foreground mt-2 leading-relaxed">{h.d}</div>
+                </div>
               </div>
             ))}
           </div>

@@ -86,8 +86,8 @@ export function Gallery({ photos }: { photos: GalleryPhoto[] }) {
   return (
     <>
       <div className="space-y-4 md:space-y-6">
-        <Row photos={rowA} direction="left" duration={90} onOpen={(i) => setLightbox(i)} />
-        <Row photos={rowB} direction="right" duration={110} onOpen={(i) => setLightbox(mid + i)} />
+        <Row photos={rowA} direction="left" duration={180} onOpen={(i) => setLightbox(i)} />
+        <Row photos={rowB} direction="right" duration={220} onOpen={(i) => setLightbox(mid + i)} />
       </div>
 
       {lightbox !== null && (

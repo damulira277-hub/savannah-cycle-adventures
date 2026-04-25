@@ -27,15 +27,15 @@ export const Route = createFileRoute("/")({
 });
 
 const highlights = [
-  { t: "Seven Hills", d: "Cycle Kampala's urban heartbeat" },
-  { t: "Ziwa Rhinos", d: "Track white rhinos on two wheels" },
-  { t: "Murchison Falls", d: "Game drives & a Nile boat cruise" },
-  { t: "Rift Valley", d: "Roll through Albertine landscapes" },
-  { t: "Crater Lakes", d: "Tea plantations near Fort Portal" },
-  { t: "Bwindi", d: "Misty jungles of the gorilla region" },
-  { t: "Kabale Highlands", d: "The Switzerland of Africa" },
-  { t: "Lake Mburo", d: "Cycle among zebras and giraffes" },
-  { t: "Ssese Islands", d: "Cross Lake Victoria, recover, exhale" },
+  { t: "Seven Hills", d: "Cycle Kampala's urban heartbeat", img: cyclistImg },
+  { t: "Ziwa Rhinos", d: "Track white rhinos on two wheels", img: rhinoImg },
+  { t: "Murchison Falls", d: "Game drives & a Nile boat cruise", img: murchisonImg },
+  { t: "Rift Valley", d: "Roll through Albertine landscapes", img: heroImg },
+  { t: "Crater Lakes", d: "Tea plantations near Fort Portal", img: craterImg },
+  { t: "Bwindi", d: "Misty jungles of the gorilla region", img: bwindiImg },
+  { t: "Kabale Highlands", d: "The Switzerland of Africa", img: craterImg },
+  { t: "Lake Mburo", d: "Cycle among zebras and giraffes", img: zebrasImg },
+  { t: "Ssese Islands", d: "Cross Lake Victoria, recover, exhale", img: lakeImg },
 ];
 
 type Stage = {
@@ -44,27 +44,28 @@ type Stage = {
   theme: string;
   km?: string;
   region: string;
+  img: string;
 };
 
 const itinerary: Stage[] = [
-  { day: "01", title: "Arrival in Kampala", theme: "Welcome dinner & cultural storytelling", region: "Central" },
-  { day: "02", title: "Kampala Urban Ride", theme: "The Seven Hills Challenge", km: "55 km", region: "Central" },
-  { day: "03", title: "Ziwa Rhino Sanctuary", theme: "Track rhinos on bike", km: "85 km", region: "North" },
-  { day: "04", title: "Murchison Falls NP", theme: "Safari & Nile cruise", km: "70 km", region: "North" },
-  { day: "05", title: "Nile Ride to Hoima", theme: "River-side cycling", km: "110 km", region: "West" },
-  { day: "06", title: "Rift Valley to Semuliki", theme: "Hot springs visit", km: "95 km", region: "West" },
-  { day: "07", title: "Climb to Fort Portal", theme: "Highland ascent", km: "75 km", region: "West" },
-  { day: "08", title: "Crater Lakes", theme: "On to Queen Elizabeth NP", km: "90 km", region: "West" },
-  { day: "09", title: "Savannah & Boat Safari", theme: "Kazinga Channel", km: "60 km", region: "Southwest" },
-  { day: "10", title: "Into Bwindi", theme: "Enter the gorilla region", km: "80 km", region: "Southwest" },
-  { day: "11", title: "Ruhija to Twin Lakes", theme: "Mountain forest riding", km: "65 km", region: "Southwest" },
-  { day: "12", title: "Lake-to-Lake Kabale", theme: "The Switzerland of Africa", km: "70 km", region: "Southwest" },
-  { day: "13", title: "Transfer to Lake Mburo", theme: "Recovery & transit", region: "South" },
-  { day: "14", title: "Lake Mburo Safari Ride", theme: "Cycle with zebras", km: "55 km", region: "South" },
-  { day: "15", title: "Mburo to Kalisizo", theme: "Rolling rural roads", km: "120 km", region: "South" },
-  { day: "16", title: "Lake Victoria Crossing", theme: "Ferry to the islands", region: "Lake Victoria" },
-  { day: "17", title: "Ssese Island Recovery", theme: "Rest day in paradise", region: "Lake Victoria" },
-  { day: "18", title: "Return to Entebbe", theme: "Farewell & departure", region: "Central" },
+  { day: "01", title: "Arrival in Kampala", theme: "Welcome dinner & cultural storytelling", region: "Central", img: cyclistImg },
+  { day: "02", title: "Kampala Urban Ride", theme: "The Seven Hills Challenge", km: "55 km", region: "Central", img: cyclistImg },
+  { day: "03", title: "Ziwa Rhino Sanctuary", theme: "Track rhinos on bike", km: "85 km", region: "North", img: rhinoImg },
+  { day: "04", title: "Murchison Falls NP", theme: "Safari & Nile cruise", km: "70 km", region: "North", img: murchisonImg },
+  { day: "05", title: "Nile Ride to Hoima", theme: "River-side cycling", km: "110 km", region: "West", img: murchisonImg },
+  { day: "06", title: "Rift Valley to Semuliki", theme: "Hot springs visit", km: "95 km", region: "West", img: heroImg },
+  { day: "07", title: "Climb to Fort Portal", theme: "Highland ascent", km: "75 km", region: "West", img: craterImg },
+  { day: "08", title: "Crater Lakes", theme: "On to Queen Elizabeth NP", km: "90 km", region: "West", img: craterImg },
+  { day: "09", title: "Savannah & Boat Safari", theme: "Kazinga Channel", km: "60 km", region: "Southwest", img: zebrasImg },
+  { day: "10", title: "Into Bwindi", theme: "Enter the gorilla region", km: "80 km", region: "Southwest", img: bwindiImg },
+  { day: "11", title: "Ruhija to Twin Lakes", theme: "Mountain forest riding", km: "65 km", region: "Southwest", img: bwindiImg },
+  { day: "12", title: "Lake-to-Lake Kabale", theme: "The Switzerland of Africa", km: "70 km", region: "Southwest", img: craterImg },
+  { day: "13", title: "Transfer to Lake Mburo", theme: "Recovery & transit", region: "South", img: zebrasImg },
+  { day: "14", title: "Lake Mburo Safari Ride", theme: "Cycle with zebras", km: "55 km", region: "South", img: zebrasImg },
+  { day: "15", title: "Mburo to Kalisizo", theme: "Rolling rural roads", km: "120 km", region: "South", img: heroImg },
+  { day: "16", title: "Lake Victoria Crossing", theme: "Ferry to the islands", region: "Lake Victoria", img: lakeImg },
+  { day: "17", title: "Ssese Island Recovery", theme: "Rest day in paradise", region: "Lake Victoria", img: lakeImg },
+  { day: "18", title: "Return to Entebbe", theme: "Farewell & departure", region: "Central", img: cyclistImg },
 ];
 
 const included = [
@@ -309,10 +310,21 @@ function Index() {
           </div>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden shadow-soft">
             {highlights.map((h, i) => (
-              <div key={h.t} className="bg-card p-8 hover:bg-accent/10 transition-colors">
-                <div className="font-display text-xs text-clay">0{i + 1}</div>
-                <div className="font-display text-2xl mt-3">{h.t}</div>
-                <div className="text-sm text-muted-foreground mt-2 leading-relaxed">{h.d}</div>
+              <div key={h.t} className="bg-card hover:bg-accent/10 transition-colors flex flex-col">
+                <div className="relative h-44 overflow-hidden">
+                  <img
+                    src={h.img}
+                    alt={h.t}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 to-transparent" />
+                </div>
+                <div className="p-8">
+                  <div className="font-display text-xs text-clay">0{i + 1}</div>
+                  <div className="font-display text-2xl mt-3">{h.t}</div>
+                  <div className="text-sm text-muted-foreground mt-2 leading-relaxed">{h.d}</div>
+                </div>
               </div>
             ))}
           </div>
@@ -334,22 +346,35 @@ function Index() {
             {itinerary.map((s) => (
               <article
                 key={s.day}
-                className="group relative bg-card rounded-2xl border border-border p-6 hover:border-primary hover:shadow-warm transition-all"
+                className="group relative bg-card rounded-2xl border border-border overflow-hidden hover:border-primary hover:shadow-warm transition-all"
               >
-                <div className="flex items-start justify-between mb-5">
-                  <div className="font-display text-5xl text-primary leading-none">{s.day}</div>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-clay border border-border rounded-full px-2.5 py-1">
-                    {s.region}
-                  </span>
-                </div>
-                <div className="font-display text-xl leading-tight">{s.title}</div>
-                <div className="text-sm text-muted-foreground mt-2 leading-relaxed">{s.theme}</div>
-                {s.km && (
-                  <div className="mt-5 pt-4 border-t border-border flex items-center gap-2 text-xs text-clay">
-                    <span className="font-display text-base text-foreground">{s.km}</span>
-                    <span className="uppercase tracking-widest">cycling</span>
+                <div className="relative h-40 overflow-hidden">
+                  <img
+                    src={s.img}
+                    alt={s.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent" />
+                  <div className="absolute top-3 right-3">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-primary-foreground bg-foreground/40 backdrop-blur-sm border border-bone/30 rounded-full px-2.5 py-1">
+                      {s.region}
+                    </span>
                   </div>
-                )}
+                  <div className="absolute bottom-3 left-4 font-display text-5xl text-primary-foreground leading-none drop-shadow-lg">
+                    {s.day}
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="font-display text-xl leading-tight">{s.title}</div>
+                  <div className="text-sm text-muted-foreground mt-2 leading-relaxed">{s.theme}</div>
+                  {s.km && (
+                    <div className="mt-5 pt-4 border-t border-border flex items-center gap-2 text-xs text-clay">
+                      <span className="font-display text-base text-foreground">{s.km}</span>
+                      <span className="uppercase tracking-widest">cycling</span>
+                    </div>
+                  )}
+                </div>
               </article>
             ))}
           </div>

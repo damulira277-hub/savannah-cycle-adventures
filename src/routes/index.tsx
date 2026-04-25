@@ -139,6 +139,7 @@ function Index() {
             <a href="#gallery" className="hover:text-accent transition">Gallery</a>
             <a href="#includes" className="hover:text-accent transition">Includes</a>
             <a href="#faq" className="hover:text-accent transition">FAQ</a>
+            <a href="#partners" className="hover:text-accent transition">Partners</a>
           </nav>
           <a href="#book">
             <Button className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-5">

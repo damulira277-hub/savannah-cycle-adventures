@@ -172,18 +172,6 @@ function Index() {
               An 18-day trans-Uganda cycling expedition — from Kampala's seven hills,
               across golden savannahs, into the misty rainforests of Bwindi.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <a href="#book">
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 h-12 text-base shadow-warm">
-                  Reserve Your Spot
-                </Button>
-              </a>
-              <a href="#journey">
-                <Button size="lg" variant="outline" className="rounded-full px-8 h-12 text-base bg-bone/10 border-bone/30 text-primary-foreground hover:bg-bone/20">
-                  Explore the Journey
-                </Button>
-              </a>
-            </div>
           </div>
         </div>
 

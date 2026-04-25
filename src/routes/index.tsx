@@ -119,6 +119,21 @@ const seedImages = [
   { src: heroImg, caption: "Acacia at sunset" },
 ];
 
+const partners: { name: string; href: string }[] = [
+  { name: "BlackSmith Safaris", href: "https://blacksmithsafaris.tours" },
+  { name: "Uganda Wildlife Authority", href: "#" },
+  { name: "Ziwa Rhino Sanctuary", href: "#" },
+  { name: "Bwindi Conservation", href: "#" },
+  { name: "Nile Boat Cruises", href: "#" },
+  { name: "Fort Portal Tea Co.", href: "#" },
+  { name: "Kalangala Ferries", href: "#" },
+  { name: "Pearl Cycles UG", href: "#" },
+  { name: "Savannah Lodges", href: "#" },
+  { name: "Murchison Camps", href: "#" },
+  { name: "Trail Mechanics", href: "#" },
+  { name: "Adventure Insure", href: "#" },
+];
+
 const galleryPhotos: GalleryPhoto[] = Array.from({ length: 100 }, (_, i) => {
   const base = seedImages[i % seedImages.length];
   return { src: base.src, caption: `${base.caption} · ${String(i + 1).padStart(3, "0")}` };
@@ -139,6 +154,7 @@ function Index() {
             <a href="#gallery" className="hover:text-accent transition">Gallery</a>
             <a href="#includes" className="hover:text-accent transition">Includes</a>
             <a href="#faq" className="hover:text-accent transition">FAQ</a>
+            <a href="#partners" className="hover:text-accent transition">Partners</a>
           </nav>
           <a href="#book">
             <Button className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-full px-5">
@@ -172,18 +188,6 @@ function Index() {
               An 18-day trans-Uganda cycling expedition — from Kampala's seven hills,
               across golden savannahs, into the misty rainforests of Bwindi.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <a href="#book">
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 h-12 text-base shadow-warm">
-                  Reserve Your Spot
-                </Button>
-              </a>
-              <a href="#journey">
-                <Button size="lg" variant="outline" className="rounded-full px-8 h-12 text-base bg-bone/10 border-bone/30 text-primary-foreground hover:bg-bone/20">
-                  Explore the Journey
-                </Button>
-              </a>
-            </div>
           </div>
         </div>
 
@@ -443,6 +447,45 @@ function Index() {
                 </AccordionItem>
               ))}
             </Accordion>
+          </div>
+        </div>
+      </section>
+
+      {/* PARTNERS / SPONSORS */}
+      <section id="partners" className="py-24 bg-background border-y border-border">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <div className="text-xs uppercase tracking-[0.25em] text-clay mb-3">Partners & Sponsors</div>
+            <h2 className="font-display text-4xl md:text-5xl">Powered by those who believe in the ride.</h2>
+            <p className="mt-4 text-muted-foreground">
+              Trusted partners helping us deliver a world-class expedition across the Pearl of Africa.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-px bg-border rounded-2xl overflow-hidden shadow-soft">
+            {partners.map((p) => (
+              <a
+                key={p.name}
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={p.name}
+                className="group bg-card aspect-[3/2] flex items-center justify-center p-6 hover:bg-accent/10 transition-colors"
+              >
+                <span className="font-display text-lg md:text-xl text-clay/70 group-hover:text-primary transition-colors text-center leading-tight">
+                  {p.name}
+                </span>
+              </a>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-sm text-muted-foreground">
+              Interested in partnering with Uganda Epic 2026?{" "}
+              <a href="mailto:info@blacksmithsafaris.com?subject=Uganda Epic 2026 — Partnership" className="text-primary underline underline-offset-4">
+                Get in touch
+              </a>
+            </p>
           </div>
         </div>
       </section>

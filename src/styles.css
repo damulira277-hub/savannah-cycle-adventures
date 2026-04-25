@@ -158,5 +158,29 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
+
+  h1, h2, h3, h4, h5 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: "Fraunces", Georgia, serif; }
+  .bg-gradient-sunset { background-image: var(--gradient-sunset); }
+  .bg-gradient-dusk { background-image: var(--gradient-dusk); }
+  .bg-gradient-overlay { background-image: var(--gradient-overlay); }
+  .shadow-warm { box-shadow: var(--shadow-warm); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .text-acacia { color: var(--savannah-acacia); }
+  .text-sunset { color: var(--savannah-sunset); }
+  .text-clay { color: var(--savannah-clay); }
+  .bg-acacia { background-color: var(--savannah-acacia); }
+  .bg-bone { background-color: var(--savannah-bone); }
+  .bg-clay { background-color: var(--savannah-clay); }
+  .bg-dust { background-color: var(--savannah-dust); }
 }

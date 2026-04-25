@@ -27,15 +27,15 @@ export const Route = createFileRoute("/")({
 });
 
 const highlights = [
-  { t: "Seven Hills", d: "Cycle Kampala's urban heartbeat" },
-  { t: "Ziwa Rhinos", d: "Track white rhinos on two wheels" },
-  { t: "Murchison Falls", d: "Game drives & a Nile boat cruise" },
-  { t: "Rift Valley", d: "Roll through Albertine landscapes" },
-  { t: "Crater Lakes", d: "Tea plantations near Fort Portal" },
-  { t: "Bwindi", d: "Misty jungles of the gorilla region" },
-  { t: "Kabale Highlands", d: "The Switzerland of Africa" },
-  { t: "Lake Mburo", d: "Cycle among zebras and giraffes" },
-  { t: "Ssese Islands", d: "Cross Lake Victoria, recover, exhale" },
+  { t: "Seven Hills", d: "Cycle Kampala's urban heartbeat", img: cyclistImg },
+  { t: "Ziwa Rhinos", d: "Track white rhinos on two wheels", img: rhinoImg },
+  { t: "Murchison Falls", d: "Game drives & a Nile boat cruise", img: murchisonImg },
+  { t: "Rift Valley", d: "Roll through Albertine landscapes", img: heroImg },
+  { t: "Crater Lakes", d: "Tea plantations near Fort Portal", img: craterImg },
+  { t: "Bwindi", d: "Misty jungles of the gorilla region", img: bwindiImg },
+  { t: "Kabale Highlands", d: "The Switzerland of Africa", img: craterImg },
+  { t: "Lake Mburo", d: "Cycle among zebras and giraffes", img: zebrasImg },
+  { t: "Ssese Islands", d: "Cross Lake Victoria, recover, exhale", img: lakeImg },
 ];
 
 type Stage = {

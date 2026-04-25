@@ -346,22 +346,35 @@ function Index() {
             {itinerary.map((s) => (
               <article
                 key={s.day}
-                className="group relative bg-card rounded-2xl border border-border p-6 hover:border-primary hover:shadow-warm transition-all"
+                className="group relative bg-card rounded-2xl border border-border overflow-hidden hover:border-primary hover:shadow-warm transition-all"
               >
-                <div className="flex items-start justify-between mb-5">
-                  <div className="font-display text-5xl text-primary leading-none">{s.day}</div>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-clay border border-border rounded-full px-2.5 py-1">
-                    {s.region}
-                  </span>
-                </div>
-                <div className="font-display text-xl leading-tight">{s.title}</div>
-                <div className="text-sm text-muted-foreground mt-2 leading-relaxed">{s.theme}</div>
-                {s.km && (
-                  <div className="mt-5 pt-4 border-t border-border flex items-center gap-2 text-xs text-clay">
-                    <span className="font-display text-base text-foreground">{s.km}</span>
-                    <span className="uppercase tracking-widest">cycling</span>
+                <div className="relative h-40 overflow-hidden">
+                  <img
+                    src={s.img}
+                    alt={s.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent" />
+                  <div className="absolute top-3 right-3">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-primary-foreground bg-foreground/40 backdrop-blur-sm border border-bone/30 rounded-full px-2.5 py-1">
+                      {s.region}
+                    </span>
                   </div>
-                )}
+                  <div className="absolute bottom-3 left-4 font-display text-5xl text-primary-foreground leading-none drop-shadow-lg">
+                    {s.day}
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="font-display text-xl leading-tight">{s.title}</div>
+                  <div className="text-sm text-muted-foreground mt-2 leading-relaxed">{s.theme}</div>
+                  {s.km && (
+                    <div className="mt-5 pt-4 border-t border-border flex items-center gap-2 text-xs text-clay">
+                      <span className="font-display text-base text-foreground">{s.km}</span>
+                      <span className="uppercase tracking-widest">cycling</span>
+                    </div>
+                  )}
+                </div>
               </article>
             ))}
           </div>

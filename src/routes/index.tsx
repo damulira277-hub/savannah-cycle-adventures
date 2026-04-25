@@ -3,8 +3,13 @@ import heroImg from "@/assets/savannah-hero.jpg";
 import cyclistImg from "@/assets/cyclist-savannah.jpg";
 import bwindiImg from "@/assets/bwindi-forest.jpg";
 import murchisonImg from "@/assets/murchison-falls.jpg";
+import rhinoImg from "@/assets/rhino.jpg";
+import craterImg from "@/assets/crater-lakes.jpg";
+import zebrasImg from "@/assets/cyclists-zebras.jpg";
+import lakeImg from "@/assets/lake-victoria.jpg";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Gallery, type GalleryPhoto } from "@/components/Gallery";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -33,25 +38,61 @@ const highlights = [
   { t: "Ssese Islands", d: "Cross Lake Victoria, recover, exhale" },
 ];
 
-const itinerary = [
-  ["01", "Arrival in Kampala", "Welcome dinner & cultural storytelling"],
-  ["02", "Kampala Urban Ride", "The Seven Hills Challenge"],
-  ["03", "Ziwa Rhino Sanctuary", "Track rhinos on bike"],
-  ["04", "Murchison Falls NP", "Safari & Nile cruise"],
-  ["05", "Nile Ride", "Transition to Hoima"],
-  ["06", "Rift Valley to Semuliki", "Hot springs visit"],
-  ["07", "Climb to Fort Portal", "Highland ascent"],
-  ["08", "Crater Lakes", "On to Queen Elizabeth NP"],
-  ["09", "Savannah & Boat Safari", "Kazinga Channel"],
-  ["10", "Into Bwindi", "Enter the gorilla region"],
-  ["11", "Ruhija to Twin Lakes", "Mountain forest riding"],
-  ["12", "Lake-to-Lake Kabale", "The Switzerland of Africa"],
-  ["13", "Transfer to Lake Mburo", "Recovery & transit"],
-  ["14", "Lake Mburo Safari Ride", "Cycle with zebras"],
-  ["15", "Mburo to Kalisizo", "Rolling rural roads"],
-  ["16", "Lake Victoria Crossing", "Ferry to the islands"],
-  ["17", "Ssese Island Recovery", "Rest day in paradise"],
-  ["18", "Return to Entebbe", "Farewell & departure"],
+type Stage = {
+  day: string;
+  title: string;
+  theme: string;
+  km?: string;
+  region: string;
+};
+
+const itinerary: Stage[] = [
+  { day: "01", title: "Arrival in Kampala", theme: "Welcome dinner & cultural storytelling", region: "Central" },
+  { day: "02", title: "Kampala Urban Ride", theme: "The Seven Hills Challenge", km: "55 km", region: "Central" },
+  { day: "03", title: "Ziwa Rhino Sanctuary", theme: "Track rhinos on bike", km: "85 km", region: "North" },
+  { day: "04", title: "Murchison Falls NP", theme: "Safari & Nile cruise", km: "70 km", region: "North" },
+  { day: "05", title: "Nile Ride to Hoima", theme: "River-side cycling", km: "110 km", region: "West" },
+  { day: "06", title: "Rift Valley to Semuliki", theme: "Hot springs visit", km: "95 km", region: "West" },
+  { day: "07", title: "Climb to Fort Portal", theme: "Highland ascent", km: "75 km", region: "West" },
+  { day: "08", title: "Crater Lakes", theme: "On to Queen Elizabeth NP", km: "90 km", region: "West" },
+  { day: "09", title: "Savannah & Boat Safari", theme: "Kazinga Channel", km: "60 km", region: "Southwest" },
+  { day: "10", title: "Into Bwindi", theme: "Enter the gorilla region", km: "80 km", region: "Southwest" },
+  { day: "11", title: "Ruhija to Twin Lakes", theme: "Mountain forest riding", km: "65 km", region: "Southwest" },
+  { day: "12", title: "Lake-to-Lake Kabale", theme: "The Switzerland of Africa", km: "70 km", region: "Southwest" },
+  { day: "13", title: "Transfer to Lake Mburo", theme: "Recovery & transit", region: "South" },
+  { day: "14", title: "Lake Mburo Safari Ride", theme: "Cycle with zebras", km: "55 km", region: "South" },
+  { day: "15", title: "Mburo to Kalisizo", theme: "Rolling rural roads", km: "120 km", region: "South" },
+  { day: "16", title: "Lake Victoria Crossing", theme: "Ferry to the islands", region: "Lake Victoria" },
+  { day: "17", title: "Ssese Island Recovery", theme: "Rest day in paradise", region: "Lake Victoria" },
+  { day: "18", title: "Return to Entebbe", theme: "Farewell & departure", region: "Central" },
+];
+
+const included = [
+  "17 nights — lodges, safari camps & boutique hotels",
+  "Full board: breakfast, lunch & dinner",
+  "Drinking water during all rides",
+  "Professional cycling guides (lead + sweep)",
+  "Fully equipped support vehicle & mechanic",
+  "Daily route briefing & navigation",
+  "Luggage transfers throughout",
+  "Rhino tracking at Ziwa",
+  "Game drives in Murchison Falls",
+  "Boat safaris — Kazinga & the Nile",
+  "Cycling safari in Lake Mburo",
+  "Hot springs in Semuliki",
+  "Ssese Island ferry & experience",
+  "Airport transfers & all park fees",
+];
+
+const excluded = [
+  "International flights",
+  "Uganda visa fees",
+  "Travel & medical insurance (mandatory)",
+  "Bike rental, if not bringing your own",
+  "Gorilla trekking permit (~$700–$800, optional)",
+  "Chimpanzee tracking permit (optional)",
+  "Alcoholic & premium beverages",
+  "Personal expenses, laundry, tips, souvenirs",
 ];
 
 const faqs = [
@@ -65,6 +106,24 @@ const faqs = [
   { q: "Are there rest days?", a: "Yes — Day 17 on Kalangala Island is a recovery day, with flexible pacing and optional shorter routes throughout." },
 ];
 
+// Gallery seed: 8 unique images repeated with captions to demonstrate up to 100 photos.
+// Replace src URLs with real photos as they become available.
+const seedImages = [
+  { src: cyclistImg, caption: "Dust roads at golden hour" },
+  { src: murchisonImg, caption: "Murchison Falls on the Nile" },
+  { src: bwindiImg, caption: "Bwindi's misty canopy" },
+  { src: rhinoImg, caption: "Tracking white rhinos at Ziwa" },
+  { src: craterImg, caption: "Crater lakes near Fort Portal" },
+  { src: zebrasImg, caption: "Riding among zebras, Lake Mburo" },
+  { src: lakeImg, caption: "Lake Victoria at dusk" },
+  { src: heroImg, caption: "Acacia at sunset" },
+];
+
+const galleryPhotos: GalleryPhoto[] = Array.from({ length: 100 }, (_, i) => {
+  const base = seedImages[i % seedImages.length];
+  return { src: base.src, caption: `${base.caption} · ${String(i + 1).padStart(3, "0")}` };
+});
+
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -77,6 +136,7 @@ function Index() {
           <nav className="hidden md:flex items-center gap-8 text-sm text-primary-foreground/90">
             <a href="#journey" className="hover:text-accent transition">The Journey</a>
             <a href="#itinerary" className="hover:text-accent transition">Itinerary</a>
+            <a href="#gallery" className="hover:text-accent transition">Gallery</a>
             <a href="#includes" className="hover:text-accent transition">Includes</a>
             <a href="#faq" className="hover:text-accent transition">FAQ</a>
           </nav>
@@ -133,7 +193,7 @@ function Index() {
             {[
               ["18", "Days"],
               ["1,400+ km", "Cycled"],
-              ["10", "National Parks & Lakes"],
+              ["10", "Parks & Lakes"],
               ["From $2,950", "Per Rider"],
             ].map(([v, l]) => (
               <div key={l}>
@@ -146,29 +206,60 @@ function Index() {
       </section>
 
       {/* Intro */}
-      <section id="journey" className="py-28 md:py-36">
-        <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-12 gap-12 items-start">
-          <div className="md:col-span-5">
-            <div className="text-xs uppercase tracking-[0.25em] text-clay mb-4">The Expedition</div>
-            <h2 className="font-display text-4xl md:text-5xl leading-tight">
-              From savannah<br />to rainforest.
-            </h2>
-          </div>
-          <div className="md:col-span-7 space-y-5 text-lg text-muted-foreground leading-relaxed">
-            <p>
-              A trans-Uganda cycling expedition that weaves together untamed wilderness, vibrant culture,
-              and breathtaking landscapes. From the energy of Kampala's seven hills to the ancient
-              rainforests of Bwindi Impenetrable National Park — a continuous immersion in the Pearl of Africa.
-            </p>
-            <p>
-              Ride through rolling savannahs alive with wildlife, navigate crater lakes and highland ridges,
-              and connect with local communities along the way. Each stage reveals a new rhythm —
-              urban buzz, rural calm, deep jungle silence.
-            </p>
-            <p className="text-foreground font-medium">
-              This is more than a cycling tour. It's a full-country traverse for explorers who seek
-              authenticity, challenge, and unforgettable encounters at every turn.
-            </p>
+      <section id="journey" className="py-28 md:py-36 bg-background">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <div className="lg:col-span-5 relative">
+              <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-warm relative">
+                <img
+                  src={cyclistImg}
+                  alt="Cyclist on a savannah road at golden hour"
+                  loading="lazy"
+                  width={1280}
+                  height={1280}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              </div>
+              <div className="hidden md:block absolute -bottom-8 -right-8 bg-card rounded-2xl shadow-warm p-6 max-w-[240px] border border-border">
+                <div className="font-display text-3xl text-primary">18</div>
+                <div className="text-xs uppercase tracking-widest text-clay mt-1">Days · 17 Nights</div>
+                <div className="text-sm text-muted-foreground mt-3">A continuous traverse from city to wilderness.</div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7 lg:pl-8">
+              <div className="text-xs uppercase tracking-[0.25em] text-clay mb-4">The Expedition</div>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
+                From savannah<br />to rainforest.
+              </h2>
+              <div className="mt-8 space-y-5 text-lg text-muted-foreground leading-relaxed">
+                <p>
+                  A trans-Uganda cycling expedition that weaves together untamed wilderness, vibrant culture,
+                  and breathtaking landscapes. From the energy of Kampala's seven hills to the ancient
+                  rainforests of Bwindi — a continuous immersion in the Pearl of Africa.
+                </p>
+                <p>
+                  Ride through rolling savannahs alive with wildlife, navigate crater lakes and highland ridges,
+                  and connect with local communities along the way. Each stage reveals a new rhythm —
+                  urban buzz, rural calm, deep jungle silence.
+                </p>
+              </div>
+
+              <div className="mt-10 grid grid-cols-3 gap-6 border-t border-border pt-8">
+                <div>
+                  <div className="font-display text-2xl text-primary">Medium</div>
+                  <div className="text-xs uppercase tracking-widest text-clay mt-1">Difficulty</div>
+                </div>
+                <div>
+                  <div className="font-display text-2xl text-primary">20–50</div>
+                  <div className="text-xs uppercase tracking-widest text-clay mt-1">Group Size</div>
+                </div>
+                <div>
+                  <div className="font-display text-2xl text-primary">60 / 40</div>
+                  <div className="text-xs uppercase tracking-widest text-clay mt-1">Tarmac / Gravel</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -225,108 +316,134 @@ function Index() {
       </section>
 
       {/* Itinerary */}
-      <section id="itinerary" className="py-28">
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="text-center mb-16">
+      <section id="itinerary" className="py-28 bg-background">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="max-w-2xl mb-16">
             <div className="text-xs uppercase tracking-[0.25em] text-clay mb-3">Day by Day</div>
             <h2 className="font-display text-4xl md:text-5xl">The 18-day route</h2>
+            <p className="mt-4 text-muted-foreground text-lg">
+              Eighteen stages, six regions, one unforgettable arc across the Pearl of Africa.
+            </p>
           </div>
-          <ol className="relative">
-            <div className="absolute left-[42px] top-2 bottom-2 w-px bg-gradient-to-b from-accent via-primary to-acacia opacity-40 hidden sm:block" />
-            {itinerary.map(([day, title, sub]) => (
-              <li key={day} className="relative flex gap-6 sm:gap-10 py-5 group">
-                <div className="font-display text-2xl text-clay w-12 shrink-0 text-right tabular-nums">{day}</div>
-                <div className="hidden sm:flex items-center justify-center w-8 shrink-0">
-                  <span className="h-3 w-3 rounded-full bg-primary ring-4 ring-background group-hover:scale-150 transition-transform" />
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {itinerary.map((s) => (
+              <article
+                key={s.day}
+                className="group relative bg-card rounded-2xl border border-border p-6 hover:border-primary hover:shadow-warm transition-all"
+              >
+                <div className="flex items-start justify-between mb-5">
+                  <div className="font-display text-5xl text-primary leading-none">{s.day}</div>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-clay border border-border rounded-full px-2.5 py-1">
+                    {s.region}
+                  </span>
                 </div>
-                <div className="flex-1 border-b border-border pb-5">
-                  <div className="font-display text-xl">{title}</div>
-                  <div className="text-sm text-muted-foreground mt-1">{sub}</div>
-                </div>
-              </li>
+                <div className="font-display text-xl leading-tight">{s.title}</div>
+                <div className="text-sm text-muted-foreground mt-2 leading-relaxed">{s.theme}</div>
+                {s.km && (
+                  <div className="mt-5 pt-4 border-t border-border flex items-center gap-2 text-xs text-clay">
+                    <span className="font-display text-base text-foreground">{s.km}</span>
+                    <span className="uppercase tracking-widest">cycling</span>
+                  </div>
+                )}
+              </article>
             ))}
-          </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section id="gallery" className="py-28 bg-secondary">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="flex items-end justify-between mb-14 flex-wrap gap-6">
+            <div>
+              <div className="text-xs uppercase tracking-[0.25em] text-clay mb-3">Field Notes</div>
+              <h2 className="font-display text-4xl md:text-5xl">Gallery</h2>
+              <p className="mt-4 text-muted-foreground max-w-xl">
+                Moments from the road — landscapes, wildlife, and the riders who chase them.
+                Click any photo to view full size.
+              </p>
+            </div>
+            <div className="text-sm text-muted-foreground">
+              {galleryPhotos.length} photos
+            </div>
+          </div>
+          <Gallery photos={galleryPhotos} />
         </div>
       </section>
 
       {/* Includes / Excludes */}
-      <section id="includes" className="bg-foreground text-primary-foreground py-28 relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{ backgroundImage: `url(${heroImg})`, backgroundSize: "cover", backgroundPosition: "center" }}
-        />
-        <div className="absolute inset-0 bg-foreground/85" />
-        <div className="relative mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-12">
-          <div>
-            <div className="text-xs uppercase tracking-[0.25em] text-accent mb-4">Included</div>
-            <h3 className="font-display text-3xl md:text-4xl mb-8">Everything you need on the road.</h3>
-            <ul className="space-y-3 text-primary-foreground/85">
-              {[
-                "17 nights — lodges, safari camps, boutique hotels",
-                "Full board: breakfast, lunch & dinner",
-                "Drinking water during all rides",
-                "Professional cycling guides (lead + sweep)",
-                "Fully equipped support vehicle & mechanic",
-                "Daily route briefing & navigation",
-                "Luggage transfers throughout",
-                "Rhino tracking at Ziwa",
-                "Game drives in Murchison Falls",
-                "Boat safaris — Kazinga & the Nile",
-                "Cycling safari in Lake Mburo",
-                "Hot springs in Semuliki",
-                "Ssese Island ferry & experience",
-                "Airport transfers & all park fees",
-              ].map((x) => (
-                <li key={x} className="flex gap-3">
-                  <span className="text-accent mt-1">✦</span>
-                  <span>{x}</span>
-                </li>
-              ))}
-            </ul>
+      <section id="includes" className="py-28 bg-background">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="max-w-2xl mb-16">
+            <div className="text-xs uppercase tracking-[0.25em] text-clay mb-3">What's in the box</div>
+            <h2 className="font-display text-4xl md:text-5xl">Everything you need,<br />nothing you don't.</h2>
           </div>
-          <div>
-            <div className="text-xs uppercase tracking-[0.25em] text-accent mb-4">Not Included</div>
-            <h3 className="font-display text-3xl md:text-4xl mb-8">Plan for these separately.</h3>
-            <ul className="space-y-3 text-primary-foreground/85">
-              {[
-                "International flights",
-                "Uganda visa fees",
-                "Travel & medical insurance (mandatory)",
-                "Bike rental, if not bringing your own",
-                "Gorilla trekking permit (~$700–$800, optional)",
-                "Chimpanzee tracking permit (optional)",
-                "Alcoholic & premium beverages",
-                "Personal expenses, laundry, tips, souvenirs",
-              ].map((x) => (
-                <li key={x} className="flex gap-3">
-                  <span className="text-clay mt-1">○</span>
-                  <span>{x}</span>
-                </li>
-              ))}
-            </ul>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-card border border-border rounded-2xl p-8 md:p-10 shadow-soft">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-9 w-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-display">✓</div>
+                <h3 className="font-display text-2xl">Included</h3>
+              </div>
+              <ul className="space-y-3">
+                {included.map((x) => (
+                  <li key={x} className="flex gap-3 text-foreground/85">
+                    <span className="text-primary mt-1.5 text-xs">●</span>
+                    <span>{x}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-secondary border border-border rounded-2xl p-8 md:p-10">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-9 w-9 rounded-full bg-clay text-primary-foreground flex items-center justify-center font-display">○</div>
+                <h3 className="font-display text-2xl">Not included</h3>
+              </div>
+              <ul className="space-y-3">
+                {excluded.map((x) => (
+                  <li key={x} className="flex gap-3 text-muted-foreground">
+                    <span className="text-clay mt-1.5 text-xs">○</span>
+                    <span>{x}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="py-28">
-        <div className="mx-auto max-w-3xl px-6">
-          <div className="text-center mb-14">
+      <section id="faq" className="py-28 bg-secondary">
+        <div className="mx-auto max-w-6xl px-6 grid lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
             <div className="text-xs uppercase tracking-[0.25em] text-clay mb-3">Questions</div>
-            <h2 className="font-display text-4xl md:text-5xl">Everything you'd want to ask.</h2>
+            <h2 className="font-display text-4xl md:text-5xl leading-tight">
+              Everything you'd want to ask.
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              Still curious? Email{" "}
+              <a href="mailto:info@blacksmithsafaris.com" className="text-primary underline underline-offset-4">
+                info@blacksmithsafaris.com
+              </a>{" "}
+              and we'll get back within 24 hours.
+            </p>
           </div>
-          <Accordion type="single" collapsible className="w-full">
-            {faqs.map((f, i) => (
-              <AccordionItem key={i} value={`item-${i}`}>
-                <AccordionTrigger className="font-display text-lg text-left hover:text-primary">
-                  {f.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed text-base">
-                  {f.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <div className="lg:col-span-8">
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((f, i) => (
+                <AccordionItem key={i} value={`item-${i}`} className="border-border">
+                  <AccordionTrigger className="font-display text-lg text-left hover:text-primary py-5">
+                    {f.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed text-base">
+                    {f.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
         </div>
       </section>
 

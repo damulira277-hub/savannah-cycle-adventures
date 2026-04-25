@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
 
 export type GalleryPhoto = {
   src: string;
@@ -7,41 +6,67 @@ export type GalleryPhoto = {
   alt?: string;
 };
 
-const COLUMN_COUNT_DESKTOP = 4;
-const COLUMN_COUNT_TABLET = 3;
-const COLUMN_COUNT_MOBILE = 2;
-const INITIAL_BATCH = 16;
-const BATCH_INCREMENT = 16;
-
-function distributeIntoColumns(items: GalleryPhoto[], cols: number) {
-  const columns: GalleryPhoto[][] = Array.from({ length: cols }, () => []);
-  items.forEach((item, i) => columns[i % cols].push(item));
-  return columns;
-}
-
-function useColumnCount() {
-  const [cols, setCols] = useState(COLUMN_COUNT_DESKTOP);
-  useEffect(() => {
-    const update = () => {
-      const w = window.innerWidth;
-      if (w < 640) setCols(COLUMN_COUNT_MOBILE);
-      else if (w < 1024) setCols(COLUMN_COUNT_TABLET);
-      else setCols(COLUMN_COUNT_DESKTOP);
-    };
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-  return cols;
+function Row({
+  photos,
+  direction = "left",
+  duration = 80,
+  onOpen,
+}: {
+  photos: GalleryPhoto[];
+  direction?: "left" | "right";
+  duration?: number;
+  onOpen: (idx: number) => void;
+}) {
+  // Duplicate the list so the translate loop is seamless.
+  const loop = [...photos, ...photos];
+  return (
+    <div
+      className="group relative overflow-hidden"
+      style={{ maskImage: "linear-gradient(to right, transparent, black 6%, black 94%, transparent)", WebkitMaskImage: "linear-gradient(to right, transparent, black 6%, black 94%, transparent)" }}
+    >
+      <div
+        className="flex gap-4 w-max animate-gallery-marquee group-hover:[animation-play-state:paused]"
+        style={{
+          animationDuration: `${duration}s`,
+          animationDirection: direction === "left" ? "normal" : "reverse",
+        }}
+      >
+        {loop.map((photo, i) => {
+          const realIdx = i % photos.length;
+          return (
+            <button
+              key={i}
+              type="button"
+              onClick={() => onOpen(realIdx)}
+              className="relative shrink-0 h-56 md:h-72 w-72 md:w-96 overflow-hidden rounded-xl bg-muted shadow-soft focus:outline-none focus:ring-2 focus:ring-primary"
+              aria-label={photo.caption ?? `Gallery photo ${realIdx + 1}`}
+            >
+              <img
+                src={photo.src}
+                alt={photo.alt ?? photo.caption ?? `Gallery photo ${realIdx + 1}`}
+                loading="lazy"
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+              {photo.caption && (
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-foreground/80 to-transparent p-3">
+                  <p className="text-xs text-primary-foreground">{photo.caption}</p>
+                </div>
+              )}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 export function Gallery({ photos }: { photos: GalleryPhoto[] }) {
-  const [visible, setVisible] = useState(INITIAL_BATCH);
   const [lightbox, setLightbox] = useState<number | null>(null);
-  const cols = useColumnCount();
 
-  const shown = photos.slice(0, visible);
-  const columns = distributeIntoColumns(shown, cols);
+  // Split into two rows for visual interest
+  const mid = Math.ceil(photos.length / 2);
+  const rowA = photos.slice(0, mid);
+  const rowB = photos.slice(mid);
 
   useEffect(() => {
     if (lightbox === null) return;
@@ -60,51 +85,10 @@ export function Gallery({ photos }: { photos: GalleryPhoto[] }) {
 
   return (
     <>
-      <div className="flex gap-3 md:gap-4">
-        {columns.map((col, ci) => (
-          <div key={ci} className="flex-1 flex flex-col gap-3 md:gap-4">
-            {col.map((photo) => {
-              const idx = photos.indexOf(photo);
-              return (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => setLightbox(idx)}
-                  className="group relative block w-full overflow-hidden rounded-xl bg-muted shadow-soft focus:outline-none focus:ring-2 focus:ring-primary"
-                >
-                  <img
-                    src={photo.src}
-                    alt={photo.alt ?? photo.caption ?? `Gallery photo ${idx + 1}`}
-                    loading="lazy"
-                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                  {photo.caption && (
-                    <div className="absolute bottom-0 left-0 right-0 p-3 text-xs text-primary-foreground translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition">
-                      {photo.caption}
-                    </div>
-                  )}
-                </button>
-              );
-            })}
-          </div>
-        ))}
+      <div className="space-y-4 md:space-y-6">
+        <Row photos={rowA} direction="left" duration={90} onOpen={(i) => setLightbox(i)} />
+        <Row photos={rowB} direction="right" duration={110} onOpen={(i) => setLightbox(mid + i)} />
       </div>
-
-      {visible < photos.length && (
-        <div className="mt-12 flex flex-col items-center gap-3">
-          <div className="text-sm text-muted-foreground">
-            Showing {visible} of {photos.length} photos
-          </div>
-          <Button
-            onClick={() => setVisible((v) => Math.min(photos.length, v + BATCH_INCREMENT))}
-            size="lg"
-            className="rounded-full px-8 bg-primary text-primary-foreground hover:bg-primary/90"
-          >
-            Load more
-          </Button>
-        </div>
-      )}
 
       {lightbox !== null && (
         <div

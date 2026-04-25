@@ -119,6 +119,21 @@ const seedImages = [
   { src: heroImg, caption: "Acacia at sunset" },
 ];
 
+const partners: { name: string; href: string }[] = [
+  { name: "BlackSmith Safaris", href: "https://blacksmithsafaris.tours" },
+  { name: "Uganda Wildlife Authority", href: "#" },
+  { name: "Ziwa Rhino Sanctuary", href: "#" },
+  { name: "Bwindi Conservation", href: "#" },
+  { name: "Nile Boat Cruises", href: "#" },
+  { name: "Fort Portal Tea Co.", href: "#" },
+  { name: "Kalangala Ferries", href: "#" },
+  { name: "Pearl Cycles UG", href: "#" },
+  { name: "Savannah Lodges", href: "#" },
+  { name: "Murchison Camps", href: "#" },
+  { name: "Trail Mechanics", href: "#" },
+  { name: "Adventure Insure", href: "#" },
+];
+
 const galleryPhotos: GalleryPhoto[] = Array.from({ length: 100 }, (_, i) => {
   const base = seedImages[i % seedImages.length];
   return { src: base.src, caption: `${base.caption} · ${String(i + 1).padStart(3, "0")}` };

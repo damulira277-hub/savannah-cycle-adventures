@@ -44,27 +44,28 @@ type Stage = {
   theme: string;
   km?: string;
   region: string;
+  img: string;
 };
 
 const itinerary: Stage[] = [
-  { day: "01", title: "Arrival in Kampala", theme: "Welcome dinner & cultural storytelling", region: "Central" },
-  { day: "02", title: "Kampala Urban Ride", theme: "The Seven Hills Challenge", km: "55 km", region: "Central" },
-  { day: "03", title: "Ziwa Rhino Sanctuary", theme: "Track rhinos on bike", km: "85 km", region: "North" },
-  { day: "04", title: "Murchison Falls NP", theme: "Safari & Nile cruise", km: "70 km", region: "North" },
-  { day: "05", title: "Nile Ride to Hoima", theme: "River-side cycling", km: "110 km", region: "West" },
-  { day: "06", title: "Rift Valley to Semuliki", theme: "Hot springs visit", km: "95 km", region: "West" },
-  { day: "07", title: "Climb to Fort Portal", theme: "Highland ascent", km: "75 km", region: "West" },
-  { day: "08", title: "Crater Lakes", theme: "On to Queen Elizabeth NP", km: "90 km", region: "West" },
-  { day: "09", title: "Savannah & Boat Safari", theme: "Kazinga Channel", km: "60 km", region: "Southwest" },
-  { day: "10", title: "Into Bwindi", theme: "Enter the gorilla region", km: "80 km", region: "Southwest" },
-  { day: "11", title: "Ruhija to Twin Lakes", theme: "Mountain forest riding", km: "65 km", region: "Southwest" },
-  { day: "12", title: "Lake-to-Lake Kabale", theme: "The Switzerland of Africa", km: "70 km", region: "Southwest" },
-  { day: "13", title: "Transfer to Lake Mburo", theme: "Recovery & transit", region: "South" },
-  { day: "14", title: "Lake Mburo Safari Ride", theme: "Cycle with zebras", km: "55 km", region: "South" },
-  { day: "15", title: "Mburo to Kalisizo", theme: "Rolling rural roads", km: "120 km", region: "South" },
-  { day: "16", title: "Lake Victoria Crossing", theme: "Ferry to the islands", region: "Lake Victoria" },
-  { day: "17", title: "Ssese Island Recovery", theme: "Rest day in paradise", region: "Lake Victoria" },
-  { day: "18", title: "Return to Entebbe", theme: "Farewell & departure", region: "Central" },
+  { day: "01", title: "Arrival in Kampala", theme: "Welcome dinner & cultural storytelling", region: "Central", img: cyclistImg },
+  { day: "02", title: "Kampala Urban Ride", theme: "The Seven Hills Challenge", km: "55 km", region: "Central", img: cyclistImg },
+  { day: "03", title: "Ziwa Rhino Sanctuary", theme: "Track rhinos on bike", km: "85 km", region: "North", img: rhinoImg },
+  { day: "04", title: "Murchison Falls NP", theme: "Safari & Nile cruise", km: "70 km", region: "North", img: murchisonImg },
+  { day: "05", title: "Nile Ride to Hoima", theme: "River-side cycling", km: "110 km", region: "West", img: murchisonImg },
+  { day: "06", title: "Rift Valley to Semuliki", theme: "Hot springs visit", km: "95 km", region: "West", img: heroImg },
+  { day: "07", title: "Climb to Fort Portal", theme: "Highland ascent", km: "75 km", region: "West", img: craterImg },
+  { day: "08", title: "Crater Lakes", theme: "On to Queen Elizabeth NP", km: "90 km", region: "West", img: craterImg },
+  { day: "09", title: "Savannah & Boat Safari", theme: "Kazinga Channel", km: "60 km", region: "Southwest", img: zebrasImg },
+  { day: "10", title: "Into Bwindi", theme: "Enter the gorilla region", km: "80 km", region: "Southwest", img: bwindiImg },
+  { day: "11", title: "Ruhija to Twin Lakes", theme: "Mountain forest riding", km: "65 km", region: "Southwest", img: bwindiImg },
+  { day: "12", title: "Lake-to-Lake Kabale", theme: "The Switzerland of Africa", km: "70 km", region: "Southwest", img: craterImg },
+  { day: "13", title: "Transfer to Lake Mburo", theme: "Recovery & transit", region: "South", img: zebrasImg },
+  { day: "14", title: "Lake Mburo Safari Ride", theme: "Cycle with zebras", km: "55 km", region: "South", img: zebrasImg },
+  { day: "15", title: "Mburo to Kalisizo", theme: "Rolling rural roads", km: "120 km", region: "South", img: heroImg },
+  { day: "16", title: "Lake Victoria Crossing", theme: "Ferry to the islands", region: "Lake Victoria", img: lakeImg },
+  { day: "17", title: "Ssese Island Recovery", theme: "Rest day in paradise", region: "Lake Victoria", img: lakeImg },
+  { day: "18", title: "Return to Entebbe", theme: "Farewell & departure", region: "Central", img: cyclistImg },
 ];
 
 const included = [

@@ -68,32 +68,54 @@ const itinerary: Stage[] = [
   { day: "18", title: "Return to Entebbe", theme: "Farewell & departure", region: "Central", img: cyclistImg },
 ];
 
-const included = [
-  "17 nights — lodges, safari camps & boutique hotels",
-  "Full board: breakfast, lunch & dinner",
-  "Drinking water during all rides",
-  "Professional cycling guides (lead + sweep)",
-  "Fully equipped support vehicle & mechanic",
-  "Daily route briefing & navigation",
-  "Luggage transfers throughout",
-  "Rhino tracking at Ziwa",
-  "Game drives in Murchison Falls",
-  "Boat safaris — Kazinga & the Nile",
-  "Cycling safari in Lake Mburo",
-  "Hot springs in Semuliki",
-  "Ssese Island ferry & experience",
-  "Airport transfers & all park fees",
+const includedGroups = [
+  {
+    label: "Stay & Table",
+    icon: "◐",
+    items: [
+      "17 nights in lodges, safari camps & boutique hotels",
+      "Full board — breakfast, lunch & dinner each day",
+      "Drinking water during all rides",
+    ],
+  },
+  {
+    label: "On the Bike",
+    icon: "◇",
+    items: [
+      "Professional cycling guides (lead + sweep)",
+      "Fully equipped support vehicle & mechanic",
+      "Daily route briefing & GPS navigation",
+      "Luggage transfers between every camp",
+    ],
+  },
+  {
+    label: "Wild Encounters",
+    icon: "✦",
+    items: [
+      "Rhino tracking at Ziwa Sanctuary",
+      "Game drives in Murchison Falls",
+      "Boat safaris — Kazinga & the Nile",
+      "Cycling safari in Lake Mburo",
+      "Hot springs in Semuliki",
+      "Ssese Island ferry & experience",
+    ],
+  },
+  {
+    label: "Logistics",
+    icon: "△",
+    items: ["Airport transfers", "All national park entry fees"],
+  },
 ];
 
-const excluded = [
-  "International flights",
-  "Uganda visa fees",
-  "Travel & medical insurance (mandatory)",
-  "Bike rental, if not bringing your own",
-  "Gorilla trekking permit (~$700–$800, optional)",
-  "Chimpanzee tracking permit (optional)",
-  "Alcoholic & premium beverages",
-  "Personal expenses, laundry, tips, souvenirs",
+const excludedItems = [
+  { t: "International flights", n: "Book your own arrival to Entebbe (EBB)." },
+  { t: "Uganda visa", n: "≈ $50, e-visa online before travel." },
+  { t: "Travel & medical insurance", n: "Mandatory — must include evacuation." },
+  { t: "Bike rental", n: "Optional, if not bringing your own." },
+  { t: "Gorilla trekking permit", n: "~$700–$800, optional add-on." },
+  { t: "Chimpanzee tracking permit", n: "Optional, bookable in advance." },
+  { t: "Premium & alcoholic drinks", n: "Available at every lodge bar." },
+  { t: "Tips, laundry, souvenirs", n: "Personal extras along the way." },
 ];
 
 const faqs = [
@@ -404,40 +426,63 @@ function Index() {
       {/* Includes / Excludes */}
       <section id="includes" className="py-28 bg-background">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="max-w-2xl mb-16">
-            <div className="text-xs uppercase tracking-[0.25em] text-clay mb-3">What's in the box</div>
-            <h2 className="font-display text-4xl md:text-5xl">Everything you need,<br />nothing you don't.</h2>
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+            <div className="max-w-2xl">
+              <div className="text-xs uppercase tracking-[0.25em] text-clay mb-3">What's in the box</div>
+              <h2 className="font-display text-4xl md:text-5xl leading-tight">
+                Everything you need,<br />nothing you don't.
+              </h2>
+            </div>
+            <p className="text-muted-foreground max-w-sm">
+              A clear breakdown of what your expedition fee covers — and the few things to budget for separately.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-card border border-border rounded-2xl p-8 md:p-10 shadow-soft">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="h-9 w-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-display">✓</div>
-                <h3 className="font-display text-2xl">Included</h3>
-              </div>
-              <ul className="space-y-3">
-                {included.map((x) => (
-                  <li key={x} className="flex gap-3 text-foreground/85">
-                    <span className="text-primary mt-1.5 text-xs">●</span>
-                    <span>{x}</span>
-                  </li>
-                ))}
-              </ul>
+          {/* Included — categorized editorial grid */}
+          <div className="relative bg-card border border-border rounded-3xl p-8 md:p-12 shadow-soft mb-8 overflow-hidden">
+            <div className="absolute top-6 right-8 text-[11px] uppercase tracking-[0.3em] text-primary/70">
+              Included · 01
             </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
+              {includedGroups.map((group) => (
+                <div key={group.label} className="relative">
+                  <div className="flex items-center gap-2 mb-5 pb-3 border-b border-border">
+                    <span className="text-primary text-lg leading-none">{group.icon}</span>
+                    <span className="text-xs uppercase tracking-[0.2em] text-foreground/80 font-medium">
+                      {group.label}
+                    </span>
+                  </div>
+                  <ul className="space-y-3">
+                    {group.items.map((item) => (
+                      <li key={item} className="flex gap-2.5 text-foreground/85 text-[15px] leading-relaxed">
+                        <span className="text-primary mt-1.5 text-[8px]">●</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
 
-            <div className="bg-secondary border border-border rounded-2xl p-8 md:p-10">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="h-9 w-9 rounded-full bg-clay text-primary-foreground flex items-center justify-center font-display">○</div>
-                <h3 className="font-display text-2xl">Not included</h3>
-              </div>
-              <ul className="space-y-3">
-                {excluded.map((x) => (
-                  <li key={x} className="flex gap-3 text-muted-foreground">
-                    <span className="text-clay mt-1.5 text-xs">○</span>
-                    <span>{x}</span>
-                  </li>
-                ))}
-              </ul>
+          {/* Excluded — quiet two-column ledger */}
+          <div className="relative bg-secondary border border-border rounded-3xl p-8 md:p-12 overflow-hidden">
+            <div className="absolute top-6 right-8 text-[11px] uppercase tracking-[0.3em] text-clay/80">
+              Plan separately · 02
+            </div>
+            <div className="flex items-center gap-2 mb-8 pb-3 border-b border-border max-w-xs">
+              <span className="text-clay text-lg leading-none">○</span>
+              <span className="text-xs uppercase tracking-[0.2em] text-foreground/80 font-medium">
+                Not included
+              </span>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6">
+              {excludedItems.map((x) => (
+                <div key={x.t} className="border-l-2 border-clay/40 pl-4">
+                  <div className="font-display text-base text-foreground mb-1">{x.t}</div>
+                  <div className="text-sm text-muted-foreground leading-snug">{x.n}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

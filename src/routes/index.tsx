@@ -424,7 +424,7 @@ function Index() {
         </div>
       </section>
 
-      {/* Includes / Excludes */}
+      {/* Includes / Excludes — editorial split */}
       <section id="includes" className="py-28 bg-background">
         <div className="mx-auto max-w-6xl px-6">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
@@ -439,48 +439,78 @@ function Index() {
             </p>
           </div>
 
-          {/* Included — categorized editorial grid */}
-          <div className="relative bg-card border border-border rounded-3xl p-8 md:p-12 shadow-soft mb-8 overflow-hidden">
-            <div className="absolute top-6 right-8 text-[11px] uppercase tracking-[0.3em] text-primary/70">
-              Included · 01
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
-              {includedGroups.map((group) => (
-                <div key={group.label} className="relative">
-                  <div className="flex items-center gap-2 mb-5 pb-3 border-b border-border">
-                    <span className="text-primary text-lg leading-none">{group.icon}</span>
-                    <span className="text-xs uppercase tracking-[0.2em] text-foreground/80 font-medium">
-                      {group.label}
-                    </span>
-                  </div>
-                  <ul className="space-y-3">
-                    {group.items.map((item) => (
-                      <li key={item} className="flex gap-2.5 text-foreground/85 text-[15px] leading-relaxed">
-                        <span className="text-primary mt-1.5 text-[8px]">●</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+          {/* Included — dark hero panel with feature image */}
+          <div className="relative grid lg:grid-cols-12 gap-0 rounded-3xl overflow-hidden shadow-soft mb-10 bg-foreground text-background">
+            {/* Feature image rail */}
+            <div className="relative lg:col-span-4 min-h-[260px] lg:min-h-full">
+              <img
+                src={cyclistImg}
+                alt="Cyclists riding through the Ugandan savannah"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-foreground via-foreground/40 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 lg:top-6 lg:bottom-auto">
+                <div className="text-[11px] uppercase tracking-[0.3em] text-primary mb-2">Included · 01</div>
+                <div className="font-display text-2xl lg:text-3xl leading-tight max-w-xs">
+                  Crafted, guided & taken care of.
                 </div>
-              ))}
+              </div>
+            </div>
+
+            {/* Categories grid */}
+            <div className="lg:col-span-8 p-8 md:p-12 grid sm:grid-cols-2 gap-x-10 gap-y-10">
+              {includedGroups.map((group, i) => {
+                const Icon = group.Icon;
+                return (
+                  <div key={group.label} className="relative">
+                    <div className="flex items-center gap-3 mb-5">
+                      <div className="w-10 h-10 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center">
+                        <Icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <div>
+                        <div className="text-[10px] uppercase tracking-[0.25em] text-background/50">
+                          0{i + 1}
+                        </div>
+                        <div className="font-display text-lg text-background leading-tight">
+                          {group.label}
+                        </div>
+                      </div>
+                    </div>
+                    <ul className="space-y-2.5 pl-1">
+                      {group.items.map((item) => (
+                        <li key={item} className="flex gap-3 text-background/80 text-[14.5px] leading-relaxed">
+                          <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
-          {/* Excluded — quiet two-column ledger */}
-          <div className="relative bg-secondary border border-border rounded-3xl p-8 md:p-12 overflow-hidden">
-            <div className="absolute top-6 right-8 text-[11px] uppercase tracking-[0.3em] text-clay/80">
-              Plan separately · 02
+          {/* Excluded — horizontal numbered ledger */}
+          <div className="relative bg-secondary/60 border border-border/60 rounded-3xl p-8 md:p-10">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8 pb-6 border-b border-border/70">
+              <div>
+                <div className="text-[11px] uppercase tracking-[0.3em] text-clay/80 mb-2">Plan separately · 02</div>
+                <div className="font-display text-2xl text-foreground">A few things to handle yourself</div>
+              </div>
+              <div className="text-sm text-muted-foreground max-w-xs">
+                Standard travel essentials and optional extras you'll book on your own.
+              </div>
             </div>
-            <div className="flex items-center gap-2 mb-8 pb-3 border-b border-border max-w-xs">
-              <span className="text-clay text-lg leading-none">○</span>
-              <span className="text-xs uppercase tracking-[0.2em] text-foreground/80 font-medium">
-                Not included
-              </span>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6">
-              {excludedItems.map((x) => (
-                <div key={x.t} className="border-l-2 border-clay/40 pl-4">
-                  <div className="font-display text-base text-foreground mb-1">{x.t}</div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-7">
+              {excludedItems.map((x, i) => (
+                <div key={x.t} className="group">
+                  <div className="flex items-center gap-2 mb-2 text-clay/80">
+                    <Minus className="w-3.5 h-3.5" />
+                    <span className="text-[10px] uppercase tracking-[0.25em]">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <div className="font-display text-base text-foreground mb-1 leading-snug">{x.t}</div>
                   <div className="text-sm text-muted-foreground leading-snug">{x.n}</div>
                 </div>
               ))}

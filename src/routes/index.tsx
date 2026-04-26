@@ -207,10 +207,10 @@ function Index() {
       {/* Nav */}
       <header className="absolute top-0 left-0 right-0 z-30">
         <div className="mx-auto max-w-7xl px-6 py-6 flex items-center justify-between">
-          <div className="font-display text-xl tracking-tight text-primary-foreground">
+          <div className="font-display text-xl tracking-tight text-bone">
             <span className="text-accent">◐</span> Uganda Epic
           </div>
-          <nav className="hidden md:flex items-center gap-8 text-sm text-primary-foreground/90">
+          <nav className="hidden md:flex items-center gap-8 text-sm text-bone/90">
             <a href="#journey" className="hover:text-accent transition">The Journey</a>
             <a href="#itinerary" className="hover:text-accent transition">Itinerary</a>
             <a href="#gallery" className="hover:text-accent transition">Gallery</a>
@@ -238,15 +238,15 @@ function Index() {
         <div className="absolute inset-0 bg-gradient-overlay" />
         <div className="relative z-10 mx-auto max-w-7xl h-full px-6 flex flex-col justify-end pb-24">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-3 rounded-full bg-bone/15 backdrop-blur-md border border-bone/20 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-primary-foreground/90 mb-6">
+            <div className="inline-flex items-center gap-3 rounded-full bg-bone/15 backdrop-blur-md border border-bone/20 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-bone/90 mb-6">
               <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
               Departure · 31 March 2026
             </div>
-            <h1 className="font-display text-5xl sm:text-7xl md:text-8xl text-primary-foreground leading-[0.95]">
+            <h1 className="font-display text-5xl sm:text-7xl md:text-8xl text-bone leading-[0.95]">
               Ride the<br />
               <span className="italic text-accent">Pearl of Africa</span>
             </h1>
-            <p className="mt-8 text-lg md:text-xl text-primary-foreground/85 max-w-xl leading-relaxed">
+            <p className="mt-8 text-lg md:text-xl text-bone/85 max-w-xl leading-relaxed">
               An 18-day trans-Uganda cycling expedition — from Kampala's seven hills,
               across golden savannahs, into the misty rainforests of Bwindi.
             </p>
@@ -255,7 +255,7 @@ function Index() {
 
         {/* Stat bar */}
         <div className="absolute bottom-0 left-0 right-0 z-20 border-t border-bone/20 bg-foreground/40 backdrop-blur-md">
-          <div className="mx-auto max-w-7xl px-6 py-5 grid grid-cols-2 md:grid-cols-4 gap-6 text-primary-foreground">
+          <div className="mx-auto max-w-7xl px-6 py-5 grid grid-cols-2 md:grid-cols-4 gap-6 text-bone">
             {[
               ["18", "Days"],
               ["1,400+ km", "Cycled"],
@@ -264,7 +264,7 @@ function Index() {
             ].map(([v, l]) => (
               <div key={l}>
                 <div className="font-display text-2xl md:text-3xl text-accent">{v}</div>
-                <div className="text-xs uppercase tracking-widest text-primary-foreground/70 mt-1">{l}</div>
+                <div className="text-xs uppercase tracking-widest text-bone/70 mt-1">{l}</div>
               </div>
             ))}
           </div>
@@ -348,7 +348,7 @@ function Index() {
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/10 to-transparent" />
-              <figcaption className="absolute bottom-0 left-0 right-0 p-6 text-primary-foreground">
+              <figcaption className="absolute bottom-0 left-0 right-0 p-6 text-bone">
                 <div className="text-xs uppercase tracking-[0.25em] text-accent">{img.label}</div>
                 <div className="font-display text-2xl mt-1">{img.caption}</div>
               </figcaption>
@@ -418,11 +418,11 @@ function Index() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-foreground/10 to-transparent" />
                   <div className="absolute top-3 right-3">
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-primary-foreground bg-foreground/40 backdrop-blur-sm border border-bone/30 rounded-full px-2.5 py-1">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-bone bg-foreground/40 backdrop-blur-sm border border-bone/30 rounded-full px-2.5 py-1">
                       {s.region}
                     </span>
                   </div>
-                  <div className="absolute bottom-3 left-4 font-display text-5xl text-primary-foreground leading-none drop-shadow-lg">
+                  <div className="absolute bottom-3 left-4 font-display text-5xl text-accent leading-none drop-shadow-lg">
                     {s.day}
                   </div>
                 </div>
@@ -635,7 +635,7 @@ function Index() {
       <section id="book" className="relative py-28 md:py-36 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-sunset" />
         <div className="absolute inset-0 opacity-30 mix-blend-overlay" style={{ backgroundImage: `url(${heroImg})`, backgroundSize: "cover", backgroundPosition: "center" }} />
-        <div className="relative mx-auto max-w-5xl px-6 text-center text-primary-foreground">
+        <div className="relative mx-auto max-w-5xl px-6 text-center text-bone">
           <div className="text-xs uppercase tracking-[0.3em] text-bone/90 mb-4">Limited to 50 riders</div>
           <h2 className="font-display text-5xl md:text-7xl leading-[0.95]">
             The road to Uganda<br/><span className="italic">begins here.</span>
@@ -651,7 +651,7 @@ function Index() {
               <div className="font-display text-2xl mt-1">$2,950</div>
               <div className="text-sm text-muted-foreground">per rider · 50 slots</div>
             </div>
-            <a href="mailto:info@blacksmithsafaris.com?subject=Uganda Epic 2026 — Reservation" className="bg-foreground text-primary-foreground hover:bg-foreground/90 transition px-10 py-6 flex items-center justify-center font-display text-xl">
+            <a href="mailto:info@blacksmithsafaris.com?subject=Uganda Epic 2026 — Reservation" className="bg-foreground text-bone hover:bg-foreground/90 transition px-10 py-6 flex items-center justify-center font-display text-xl">
               Reserve →
             </a>
           </div>
@@ -662,9 +662,9 @@ function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-foreground text-primary-foreground/70 py-12">
+      <footer className="bg-foreground text-bone/70 py-12">
         <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row justify-between gap-6 text-sm">
-          <div className="font-display text-xl text-primary-foreground">
+          <div className="font-display text-xl text-bone">
             <span className="text-accent">◐</span> Uganda Epic 2026
           </div>
           <div>Operated by BlackSmith Safaris · Adventure Cycling in Africa</div>

@@ -143,20 +143,58 @@ const seedImages = [
   { src: heroImg, caption: "Acacia at sunset" },
 ];
 
-const partners: { name: string; href: string }[] = [
-  { name: "BlackSmith Safaris", href: "https://blacksmithsafaris.tours" },
-  { name: "Uganda Wildlife Authority", href: "#" },
-  { name: "Ziwa Rhino Sanctuary", href: "#" },
-  { name: "Bwindi Conservation", href: "#" },
-  { name: "Nile Boat Cruises", href: "#" },
-  { name: "Fort Portal Tea Co.", href: "#" },
-  { name: "Kalangala Ferries", href: "#" },
-  { name: "Pearl Cycles UG", href: "#" },
-  { name: "Savannah Lodges", href: "#" },
-  { name: "Murchison Camps", href: "#" },
-  { name: "Trail Mechanics", href: "#" },
-  { name: "Adventure Insure", href: "#" },
+type Partner = {
+  name: string;
+  href: string;
+  monogram: string; // 1-3 chars
+  shape: "circle" | "square" | "shield" | "hex" | "diamond" | "arch";
+};
+
+const partners: Partner[] = [
+  { name: "BlackSmith Safaris", href: "https://blacksmithsafaris.tours", monogram: "BS", shape: "shield" },
+  { name: "Uganda Wildlife Authority", href: "#", monogram: "UWA", shape: "circle" },
+  { name: "Ziwa Rhino Sanctuary", href: "#", monogram: "ZR", shape: "hex" },
+  { name: "Bwindi Conservation", href: "#", monogram: "BC", shape: "arch" },
+  { name: "Nile Boat Cruises", href: "#", monogram: "NBC", shape: "diamond" },
+  { name: "Fort Portal Tea Co.", href: "#", monogram: "FP", shape: "square" },
+  { name: "Kalangala Ferries", href: "#", monogram: "KF", shape: "circle" },
+  { name: "Pearl Cycles UG", href: "#", monogram: "PC", shape: "hex" },
+  { name: "Savannah Lodges", href: "#", monogram: "SL", shape: "arch" },
+  { name: "Murchison Camps", href: "#", monogram: "MC", shape: "shield" },
+  { name: "Trail Mechanics", href: "#", monogram: "TM", shape: "diamond" },
+  { name: "Adventure Insure", href: "#", monogram: "AI", shape: "square" },
 ];
+
+function PartnerMark({ monogram, shape }: { monogram: string; shape: Partner["shape"] }) {
+  const stroke = "currentColor";
+  return (
+    <svg viewBox="0 0 80 80" className="w-12 h-12 md:w-14 md:h-14" fill="none">
+      {shape === "circle" && <circle cx="40" cy="40" r="32" stroke={stroke} strokeWidth="1.5" />}
+      {shape === "square" && <rect x="10" y="10" width="60" height="60" stroke={stroke} strokeWidth="1.5" />}
+      {shape === "shield" && (
+        <path d="M40 8 L68 18 V44 C68 58 56 68 40 74 C24 68 12 58 12 44 V18 Z" stroke={stroke} strokeWidth="1.5" />
+      )}
+      {shape === "hex" && (
+        <path d="M40 8 L68 24 V56 L40 72 L12 56 V24 Z" stroke={stroke} strokeWidth="1.5" />
+      )}
+      {shape === "diamond" && <path d="M40 6 L74 40 L40 74 L6 40 Z" stroke={stroke} strokeWidth="1.5" />}
+      {shape === "arch" && (
+        <path d="M12 70 V40 C12 24 24 12 40 12 C56 12 68 24 68 40 V70 Z" stroke={stroke} strokeWidth="1.5" />
+      )}
+      <text
+        x="40"
+        y="46"
+        textAnchor="middle"
+        fontFamily="Georgia, serif"
+        fontSize={monogram.length > 2 ? 16 : 20}
+        fill={stroke}
+        letterSpacing="1"
+      >
+        {monogram}
+      </text>
+    </svg>
+  );
+}
 
 const galleryPhotos: GalleryPhoto[] = Array.from({ length: 100 }, (_, i) => {
   const base = seedImages[i % seedImages.length];

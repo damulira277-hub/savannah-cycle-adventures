@@ -68,32 +68,54 @@ const itinerary: Stage[] = [
   { day: "18", title: "Return to Entebbe", theme: "Farewell & departure", region: "Central", img: cyclistImg },
 ];
 
-const included = [
-  "17 nights — lodges, safari camps & boutique hotels",
-  "Full board: breakfast, lunch & dinner",
-  "Drinking water during all rides",
-  "Professional cycling guides (lead + sweep)",
-  "Fully equipped support vehicle & mechanic",
-  "Daily route briefing & navigation",
-  "Luggage transfers throughout",
-  "Rhino tracking at Ziwa",
-  "Game drives in Murchison Falls",
-  "Boat safaris — Kazinga & the Nile",
-  "Cycling safari in Lake Mburo",
-  "Hot springs in Semuliki",
-  "Ssese Island ferry & experience",
-  "Airport transfers & all park fees",
+const includedGroups = [
+  {
+    label: "Stay & Table",
+    icon: "◐",
+    items: [
+      "17 nights in lodges, safari camps & boutique hotels",
+      "Full board — breakfast, lunch & dinner each day",
+      "Drinking water during all rides",
+    ],
+  },
+  {
+    label: "On the Bike",
+    icon: "◇",
+    items: [
+      "Professional cycling guides (lead + sweep)",
+      "Fully equipped support vehicle & mechanic",
+      "Daily route briefing & GPS navigation",
+      "Luggage transfers between every camp",
+    ],
+  },
+  {
+    label: "Wild Encounters",
+    icon: "✦",
+    items: [
+      "Rhino tracking at Ziwa Sanctuary",
+      "Game drives in Murchison Falls",
+      "Boat safaris — Kazinga & the Nile",
+      "Cycling safari in Lake Mburo",
+      "Hot springs in Semuliki",
+      "Ssese Island ferry & experience",
+    ],
+  },
+  {
+    label: "Logistics",
+    icon: "△",
+    items: ["Airport transfers", "All national park entry fees"],
+  },
 ];
 
-const excluded = [
-  "International flights",
-  "Uganda visa fees",
-  "Travel & medical insurance (mandatory)",
-  "Bike rental, if not bringing your own",
-  "Gorilla trekking permit (~$700–$800, optional)",
-  "Chimpanzee tracking permit (optional)",
-  "Alcoholic & premium beverages",
-  "Personal expenses, laundry, tips, souvenirs",
+const excludedItems = [
+  { t: "International flights", n: "Book your own arrival to Entebbe (EBB)." },
+  { t: "Uganda visa", n: "≈ $50, e-visa online before travel." },
+  { t: "Travel & medical insurance", n: "Mandatory — must include evacuation." },
+  { t: "Bike rental", n: "Optional, if not bringing your own." },
+  { t: "Gorilla trekking permit", n: "~$700–$800, optional add-on." },
+  { t: "Chimpanzee tracking permit", n: "Optional, bookable in advance." },
+  { t: "Premium & alcoholic drinks", n: "Available at every lodge bar." },
+  { t: "Tips, laundry, souvenirs", n: "Personal extras along the way." },
 ];
 
 const faqs = [

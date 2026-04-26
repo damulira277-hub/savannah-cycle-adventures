@@ -609,9 +609,11 @@ function Index() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={p.name}
-                className="group bg-card aspect-[3/2] flex items-center justify-center p-6 hover:bg-accent/10 transition-colors"
+                aria-label={p.name}
+                className="group bg-card aspect-[3/2] flex flex-col items-center justify-center gap-2 p-5 text-clay/70 hover:text-primary hover:bg-accent/10 transition-colors"
               >
-                <span className="font-display text-lg md:text-xl text-clay/70 group-hover:text-primary transition-colors text-center leading-tight">
+                <PartnerMark monogram={p.monogram} shape={p.shape} />
+                <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground/80 group-hover:text-primary/80 transition-colors text-center leading-tight max-w-[12ch]">
                   {p.name}
                 </span>
               </a>

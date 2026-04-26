@@ -185,13 +185,18 @@
   .font-display { font-family: "Fraunces", Georgia, serif; }
   .bg-gradient-sunset { background-image: var(--gradient-sunset); }
   .bg-gradient-dusk { background-image: var(--gradient-dusk); }
+  .bg-gradient-tropic { background-image: var(--gradient-tropic); }
   .bg-gradient-overlay { background-image: var(--gradient-overlay); }
   .shadow-warm { box-shadow: var(--shadow-warm); }
   .shadow-soft { box-shadow: var(--shadow-soft); }
   .text-acacia { color: var(--savannah-acacia); }
+  .text-lime { color: var(--savannah-lime); }
+  .text-sun { color: var(--savannah-sun); }
   .text-sunset { color: var(--savannah-sunset); }
   .text-clay { color: var(--savannah-clay); }
   .bg-acacia { background-color: var(--savannah-acacia); }
+  .bg-lime { background-color: var(--savannah-lime); }
+  .bg-sun { background-color: var(--savannah-sun); }
   .bg-bone { background-color: var(--savannah-bone); }
   .bg-clay { background-color: var(--savannah-clay); }
   .bg-dust { background-color: var(--savannah-dust); }

@@ -10,6 +10,7 @@ import lakeImg from "@/assets/lake-victoria.jpg";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Gallery, type GalleryPhoto } from "@/components/Gallery";
+import { BedDouble, Bike, Sparkles, Plane, Check, Minus } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({

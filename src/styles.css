@@ -65,40 +65,44 @@
 :root {
   --radius: 0.75rem;
 
-  /* Savannah palette */
-  --background: oklch(0.97 0.025 85);          /* warm cream */
-  --foreground: oklch(0.22 0.04 50);           /* deep umber */
-  --card: oklch(0.985 0.018 85);
-  --card-foreground: oklch(0.22 0.04 50);
-  --popover: oklch(0.985 0.018 85);
-  --popover-foreground: oklch(0.22 0.04 50);
-  --primary: oklch(0.55 0.18 45);              /* burnt orange / sunset */
-  --primary-foreground: oklch(0.985 0.015 85);
-  --secondary: oklch(0.93 0.04 80);            /* sand */
-  --secondary-foreground: oklch(0.28 0.05 50);
-  --muted: oklch(0.93 0.035 82);
-  --muted-foreground: oklch(0.45 0.04 60);
-  --accent: oklch(0.72 0.15 75);               /* golden ochre */
-  --accent-foreground: oklch(0.22 0.04 50);
-  --destructive: oklch(0.55 0.22 28);
-  --destructive-foreground: oklch(0.985 0.015 85);
-  --border: oklch(0.86 0.04 78);
-  --input: oklch(0.9 0.035 80);
-  --ring: oklch(0.55 0.18 45);
+  /* Vibrant Savannah palette — yellow, orange, lime, green */
+  --background: oklch(0.985 0.025 95);                 /* warm bone */
+  --foreground: oklch(0.24 0.06 130);                  /* deep forest */
+  --card: oklch(0.99 0.018 95);
+  --card-foreground: oklch(0.24 0.06 130);
+  --popover: oklch(0.99 0.018 95);
+  --popover-foreground: oklch(0.24 0.06 130);
 
-  /* Extra savannah tokens */
-  --savannah-acacia: oklch(0.38 0.06 130);     /* deep acacia green */
-  --savannah-dust: oklch(0.78 0.08 70);
-  --savannah-sunset: oklch(0.62 0.2 35);
-  --savannah-clay: oklch(0.45 0.12 40);
-  --savannah-bone: oklch(0.95 0.02 85);
+  --primary: oklch(0.72 0.2 60);                       /* #FFA500 orange */
+  --primary-foreground: oklch(0.22 0.05 130);
+  --secondary: oklch(0.95 0.06 100);                   /* pale gold wash */
+  --secondary-foreground: oklch(0.28 0.06 130);
+  --muted: oklch(0.95 0.05 105);
+  --muted-foreground: oklch(0.45 0.06 110);
+  --accent: oklch(0.86 0.18 100);                      /* #FFD700 gold */
+  --accent-foreground: oklch(0.22 0.05 130);
+  --destructive: oklch(0.6 0.22 28);
+  --destructive-foreground: oklch(0.99 0.015 95);
+  --border: oklch(0.88 0.07 100);
+  --input: oklch(0.92 0.06 100);
+  --ring: oklch(0.72 0.2 60);
 
-  --gradient-sunset: linear-gradient(135deg, oklch(0.62 0.2 35), oklch(0.72 0.18 65) 50%, oklch(0.82 0.14 90));
-  --gradient-dusk: linear-gradient(180deg, oklch(0.35 0.08 45) 0%, oklch(0.5 0.16 40) 60%, oklch(0.72 0.18 70) 100%);
-  --gradient-overlay: linear-gradient(180deg, oklch(0.18 0.04 50 / 0.15) 0%, oklch(0.18 0.04 50 / 0.85) 100%);
+  /* Vibrant savannah accents */
+  --savannah-acacia: oklch(0.62 0.2 140);              /* #32CD32 lime green */
+  --savannah-lime: oklch(0.78 0.2 130);                /* #9ACD32 yellow-green */
+  --savannah-dust: oklch(0.86 0.18 100);               /* gold */
+  --savannah-sunset: oklch(0.72 0.2 60);               /* orange */
+  --savannah-clay: oklch(0.55 0.18 55);                /* burnt orange clay */
+  --savannah-bone: oklch(0.97 0.025 95);
+  --savannah-sun: oklch(0.92 0.2 105);                 /* #FFFF00 yellow */
 
-  --shadow-warm: 0 20px 50px -20px oklch(0.45 0.12 40 / 0.4);
-  --shadow-soft: 0 8px 30px -10px oklch(0.3 0.08 40 / 0.25);
+  --gradient-sunset: linear-gradient(135deg, oklch(0.72 0.2 60) 0%, oklch(0.86 0.18 100) 50%, oklch(0.92 0.2 105) 100%);
+  --gradient-dusk: linear-gradient(180deg, oklch(0.62 0.2 140) 0%, oklch(0.78 0.2 130) 45%, oklch(0.86 0.18 100) 100%);
+  --gradient-overlay: linear-gradient(180deg, oklch(0.2 0.06 130 / 0.1) 0%, oklch(0.2 0.06 130 / 0.85) 100%);
+  --gradient-tropic: linear-gradient(120deg, oklch(0.92 0.2 105), oklch(0.78 0.2 130) 50%, oklch(0.62 0.2 140));
+
+  --shadow-warm: 0 20px 50px -20px oklch(0.55 0.18 55 / 0.45);
+  --shadow-soft: 0 8px 30px -10px oklch(0.4 0.1 90 / 0.25);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);

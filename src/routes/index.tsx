@@ -72,7 +72,7 @@ const itinerary: Stage[] = [
 const includedGroups = [
   {
     label: "Stay & Table",
-    icon: "◐",
+    Icon: BedDouble,
     items: [
       "17 nights in lodges, safari camps & boutique hotels",
       "Full board — breakfast, lunch & dinner each day",
@@ -81,7 +81,7 @@ const includedGroups = [
   },
   {
     label: "On the Bike",
-    icon: "◇",
+    Icon: Bike,
     items: [
       "Professional cycling guides (lead + sweep)",
       "Fully equipped support vehicle & mechanic",
@@ -91,7 +91,7 @@ const includedGroups = [
   },
   {
     label: "Wild Encounters",
-    icon: "✦",
+    Icon: Sparkles,
     items: [
       "Rhino tracking at Ziwa Sanctuary",
       "Game drives in Murchison Falls",
@@ -103,7 +103,7 @@ const includedGroups = [
   },
   {
     label: "Logistics",
-    icon: "△",
+    Icon: Plane,
     items: ["Airport transfers", "All national park entry fees"],
   },
 ];
